@@ -38,10 +38,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="es" className='dark'>
-        <Head>
-          <title>Portfolio</title>
-          <meta name="description" content="A site for my programming portfolio" />
-        </Head>
+        <Head/>
         <body>
           <Main/>
           <NextScript />
