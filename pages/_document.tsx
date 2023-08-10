@@ -43,7 +43,7 @@ class MyDocument extends Document {
           <meta name="description" content="A site for my programming portfolio" />
         </Head>
         <body>
-          <Main />
+          <Main/>
           <NextScript />
         </body>
       </Html>
