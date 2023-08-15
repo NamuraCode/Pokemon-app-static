@@ -16,7 +16,9 @@ export const Layout = ({ children, title }: LayoutProps) => {
         <meta name="keywords" content={`${title}, pokemon, pokedex`} />
       </Head>
       <Navbar/>
-      <main>{children}</main>
+      <main style={{
+        padding: '0px 20px'
+      }}>{children}</main>
     </>
   );
 };

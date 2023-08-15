@@ -1,5 +1,4 @@
 export const Navbar = () => {
-
     return (
       <nav style={{
         display: 'flex',
@@ -8,7 +7,7 @@ export const Navbar = () => {
         alignItems: 'center',
         justifyContent: 'start',
         padding: '0 20px',
-        backgroundColor: 'red',
+        backgroundColor: '',
       }}>
         <span>Hola soy un nav</span>
        </nav>
