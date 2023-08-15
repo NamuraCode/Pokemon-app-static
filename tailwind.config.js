@@ -16,6 +16,7 @@ module.exports = {
       themes: {
         pokemon: {
           colors: {
+            red: "#0000ff",
             background: "#1F1F1F",
             foreground: "#ffffff",
             primary: {
