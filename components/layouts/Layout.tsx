@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { Navbar } from "../ui";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -14,6 +15,7 @@ export const Layout = ({ children, title }: LayoutProps) => {
         <meta name="description" content={`Information about pokemon ${title}`}/>
         <meta name="keywords" content={`${title}, pokemon, pokedex`} />
       </Head>
+      <Navbar/>
       <main>{children}</main>
     </>
   );
