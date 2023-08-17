@@ -1,11 +1,31 @@
-import { Layout } from "@/components/layouts";
-import { Button } from "@nextui-org/react";
+import { GetStaticProps } from "next";
 
-export default function Home() {
+import { Layout } from "@/components/layouts";
+
+export default function Home(props) {
+  console.log({props});
   return (
     <Layout title="Listado de pokemons"> 
-        <h1 className="">Next.js + TypeScript</h1>
-        <Button color="danger">Click me</Button>
+    <ul>
+      <li>Pokémon</li>
+      <li>Pokémon</li>
+      <li>Pokémon</li>
+      <li>Pokémon</li>
+      <li>Pokémon</li>
+      <li>Pokémon</li>
+      <li>Pokémon</li>
+      <li>Pokémon</li>
+    </ul>
     </Layout>
   );
 }
+
+export const getStaticProps : GetStaticProps = async (ctx) => {
+  console.log("Hola mundo");
+  
+  return {
+    props: {
+
+    },
+  };
+} 
