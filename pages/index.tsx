@@ -1,31 +1,33 @@
-import { GetStaticProps } from "next";
+import { GetStaticProps, NextPage } from "next";
 
 import { Layout } from "@/components/layouts";
 
-export default function Home(props) {
-  console.log({props});
+const Home: NextPage = (props) => {
+  console.log({ props });
   return (
-    <Layout title="Listado de pokemons"> 
-    <ul>
-      <li>Pokémon</li>
-      <li>Pokémon</li>
-      <li>Pokémon</li>
-      <li>Pokémon</li>
-      <li>Pokémon</li>
-      <li>Pokémon</li>
-      <li>Pokémon</li>
-      <li>Pokémon</li>
-    </ul>
+    <Layout title="Listado de pokemons">
+      <ul>
+        <li>Pokémon</li>
+        <li>Pokémon</li>
+        <li>Pokémon</li>
+        <li>Pokémon</li>
+        <li>Pokémon</li>
+        <li>Pokémon</li>
+        <li>Pokémon</li>
+        <li>Pokémon</li>
+      </ul>
     </Layout>
   );
-}
+};
 
-export const getStaticProps : GetStaticProps = async (ctx) => {
+export const getStaticProps: GetStaticProps = async (ctx) => {
   console.log("Hola mundo");
-  
+
   return {
     props: {
-
+      name: "David",
     },
   };
-} 
+};
+
+export default Home;
