@@ -22,7 +22,7 @@ const Home: NextPage = (props) => {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   console.log("Hola mundo");
-
+  
   return {
     props: {
       name: "David",
