@@ -22,10 +22,11 @@ const Home: NextPage = (props) => {
 };
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
-  const resp = await pokemonApi.get("/pokemon?limit=151");
-  console.log( resp.data );
+  const { data } = await pokemonApi.get("/pokemon?limit=151");
+  console.log( data );
   return {
     props: {
+      pokemons: data.results,
     },
   };
 };
