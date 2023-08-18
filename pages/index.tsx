@@ -2,21 +2,22 @@ import { GetStaticProps, NextPage } from "next";
 
 import { Layout } from "@/components/layouts";
 import { pokemonApi } from "@/api";
-import { PokemonListRes } from "@/interfaces";
+import { PokemonListRes, SmallPokemon } from "@/interfaces";
 
-const Home: NextPage = (props) => {
-  console.log({ props });
+interface Props {
+  pokemons: SmallPokemon[];
+}
+
+const Home: NextPage<Props> = ({ pokemons }) => {
+  console.log( pokemons );
   return (
     <Layout title="Listado de pokemons">
       <ul>
-        <li>Pokémon</li>
-        <li>Pokémon</li>
-        <li>Pokémon</li>
-        <li>Pokémon</li>
-        <li>Pokémon</li>
-        <li>Pokémon</li>
-        <li>Pokémon</li>
-        <li>Pokémon</li>
+        {pokemons.map((pokemon, index) => {
+          return <li key={index}>
+            <span></span>
+          </li>;
+        })};
       </ul>
     </Layout>
   );
@@ -24,10 +25,14 @@ const Home: NextPage = (props) => {
 
 export const getStaticProps: GetStaticProps = async (ctx) => {
   const { data } = await pokemonApi.get<PokemonListRes>("/pokemon?limit=151");
+  console.log( data );
+  const pokemonsFill : SmallPokemon[] = data.results.map((pokemon, index) => {
+    return pokemon.id = index, pokemon.img = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index}.png`
+  });
   return {
     props: {
-      pokemons: data.results,
-    },
+      pokemons: pokemonsFill,
+   },
   };
 };
 

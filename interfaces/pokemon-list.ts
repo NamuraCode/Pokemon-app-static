@@ -2,10 +2,12 @@ export interface PokemonListRes {
     count:    number;
     next?:     string;
     previous?: string;
-    results:  smallPokemon[];
+    results:  SmallPokemon[];
 }
 
-export interface smallPokemon {
+export interface SmallPokemon {
     name: string;
     url:  string;
+    id: number;
+    img: string;
 }
