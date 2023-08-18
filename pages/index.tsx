@@ -27,7 +27,9 @@ const Home: NextPage<Props> = ({ pokemons }) => {
                 width={100}
                 height={100}
               />
-              <Link href={pokemon.url} target="blank">go to {pokemon.name}</Link>
+              <Link href={pokemon.url} target="blank">
+                go to {pokemon.name}
+              </Link>
             </li>
           );
         })}
