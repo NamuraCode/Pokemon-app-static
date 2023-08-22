@@ -16,8 +16,8 @@ const Home: NextPage<Props> = ({ pokemons }) => {
   return (
     <Layout title="Listado de pokemons">
       <div className="max-w-[100%] gap-6 grid grid-cols-4 grid-rows-2">
-        {pokemons.map((pokemon) => {
-          return <PokemonCart pokemon={pokemon} />;
+        {pokemons.map((pokemon, index) => {
+          return <PokemonCart key={index} pokemon={pokemon} />;
         })}
       </div>
     </Layout>
