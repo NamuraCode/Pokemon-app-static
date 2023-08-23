@@ -4,7 +4,6 @@ import { Layout } from "@/components/layouts";
 import { pokemonApi } from "@/api";
 import { PokemonListRes, SmallPokemon } from "@/interfaces";
 import Link from "next/link";
-import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
 import { PokemonCart } from "@/components/pokemon/PokemonCard";
 
 interface Props {
