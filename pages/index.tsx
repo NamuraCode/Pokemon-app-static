@@ -4,14 +4,13 @@ import { Layout } from "@/components/layouts";
 import { pokemonApi } from "@/api";
 import { PokemonListRes, SmallPokemon } from "@/interfaces";
 import Link from "next/link";
-import { PokemonCart } from "@/components/pokemon/PokemonCard";
+import { PokemonCart } from '@/components/pokemon'
 
 interface Props {
   pokemons: SmallPokemon[];
 }
 
 const Home: NextPage<Props> = ({ pokemons }) => {
-  console.log(pokemons);
   return (
     <Layout title="Listado de pokemons">
       <div className="max-w-[100%] gap-6 grid grid-cols-4 grid-rows-2">

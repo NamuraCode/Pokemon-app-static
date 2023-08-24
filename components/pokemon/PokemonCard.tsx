@@ -1,17 +1,22 @@
 import { SmallPokemon } from "@/interfaces";
 import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 interface Props {
   pokemon: SmallPokemon;
 }
 export const PokemonCart = ({ pokemon }: Props) => {
+  const res = useRouter()
+  const redirect = ()=>{
+    res.push(`pokemon/${pokemon.id}`)
+  }
   return (
     <Card
       shadow="sm"
       key={pokemon.id}
       isPressable
-      onPress={() => console.log("item pressed")}
+      onPress={redirect}
     >
       <CardBody className="overflow-visible p-0">
         <Image
