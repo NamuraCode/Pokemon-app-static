@@ -20,29 +20,13 @@ const PokemonPage = ({ id, name }: Props) => {
 export default PokemonPage;
 
 export const getStaticPaths: GetStaticPaths = async () => {
+  const numberPokemons = [...Array(151)].map((value, index)=>`${index +1 }`)
+  console.log(numberPokemons);
+  
   return {
-    paths: [
-      {
-        params: {
-          id: "1",
-        }
-      },
-      {
-        params: {
-          id: "2",
-        }
-      },
-      {
-        params: {
-          id: "3",
-        }
-      },
-      {
-        params: {
-          id: "4",
-        }
-      },
-    ],
+    paths: numberPokemons.map((id) => ({
+      params: { id },
+    })),
     fallback: false, // false or "blocking"
   };
 };
