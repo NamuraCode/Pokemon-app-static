@@ -53,7 +53,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   return {
     props: {
       id: 1,
-      name: "bulbasaur",
+      name: "Bulbasaur",
     },
   };
 };
