@@ -3,7 +3,7 @@ import { GetStaticPaths, GetStaticProps } from "next";
 import { Layout } from "@/components/layouts";
 import { pokemonApi } from "@/api";
 import { PokemonData } from "@/interfaces";
-import { Image } from "@nextui-org/react";
+import { Card, CardBody, Image } from "@nextui-org/react";
 
 interface Props {
   pokemon: PokemonData;
@@ -12,10 +12,11 @@ interface Props {
 const PokemonPage = ({ pokemon }: Props) => {
   return (
     <Layout title={`Pokemon - ${pokemon.id}`}>
-      <h1>
-        {pokemon.id} - {pokemon.name}
-      </h1>
-      <Image src={`${pokemon.sprites.front_default}`}></Image>
+      <Card>
+        <CardBody className="flex">
+          <Image src={`${pokemon.sprites.front_default}`}/>
+        </CardBody>
+      </Card>
     </Layout>
   );
 };
