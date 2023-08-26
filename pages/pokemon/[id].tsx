@@ -12,8 +12,8 @@ interface Props {
 const PokemonPage = ({ pokemon }: Props) => {
   return (
     <Layout title={`Pokemon - ${pokemon.id}`}>
-      <Card>
-        <CardBody className="flex">
+      <Card className="py-4">
+        <CardBody className="flex overflow-visible py-2">
           <Image src={`${pokemon.sprites.front_default}`}/>
         </CardBody>
       </Card>
