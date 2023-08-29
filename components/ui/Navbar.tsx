@@ -33,7 +33,7 @@ export const Navbar = () => {
       </Link>
       <Spacer style={{ flex: 1 }} />
 
-      <p className="red">favorites</p>
+      <Link href={'/favorites'}>favorites</Link>
     </nav>
   );
 };
