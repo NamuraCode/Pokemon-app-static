@@ -13,7 +13,7 @@ const PokemonPage = ({ pokemon }: Props) => {
   return (
     <Layout title={`Pokemon - ${pokemon.id}`}>
       <Card className="m-auto bg-transparent max-w-3xl mt-10 flex flex-row">
-        <CardBody className="flex justify-center align-middle bg-background2">
+        <CardBody className="flex justify-center items-center bg-background2">
           <Image
             alt={pokemon.name}
             className={"self-center"}
@@ -22,7 +22,7 @@ const PokemonPage = ({ pokemon }: Props) => {
           />
         </CardBody>
         <Spacer x={4} />
-        <CardBody className="flex justify-between align-middle bg-background2 py-unit-1xl">
+        <CardBody className="flex justify-between bg-background2">
           <div className="flex flex-row justify-between align-bottom">
             <h2 className="flex items-center text-2xl capitalize">{pokemon.name}</h2>
             <Button color={"primary"}>Save favorites</Button>
