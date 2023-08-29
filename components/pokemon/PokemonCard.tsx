@@ -19,7 +19,7 @@ export const PokemonCart = ({ pokemon }: Props) => {
       isPressable
       onPress={redirect}
     >
-      <CardBody className="flex items-center">
+      <CardBody className="overflow-visible p-0">
         <Image
           shadow="sm"
           radius="lg"
