@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 interface Props {
   pokemon: SmallPokemon;
 }
+
 export const PokemonCart = ({ pokemon }: Props) => {
   const res = useRouter()
   const redirect = ()=>{
@@ -18,7 +19,7 @@ export const PokemonCart = ({ pokemon }: Props) => {
       isPressable
       onPress={redirect}
     >
-      <CardBody className="overflow-visible p-0">
+      <CardBody className="flex items-center">
         <Image
           shadow="sm"
           radius="lg"
@@ -28,7 +29,7 @@ export const PokemonCart = ({ pokemon }: Props) => {
           src={pokemon.img}
         />
       </CardBody>
-      <CardFooter className="text-small justify-between">
+      <CardFooter className="flex items-center text-small justify-between">
         <b className="text-default-500">{pokemon.name}</b>
         <p className="text-default-500">{pokemon.id}</p>
         <Link href={pokemon.url} target="blank" className="text-default-500">
