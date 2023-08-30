@@ -1,14 +1,12 @@
-const getFavorites =():number[] =>{
-    let favorites: number[] = JSON.parse(localStorage.getItem("favorites") || "[]")
-    return favorites
-}
+const getFavorites = (): number[] => {
+  let favorites: number[] = JSON.parse(localStorage.getItem("favorites") || "[]");
+  return favorites;
+};
 
 const saveInFavorites = (id: number) => {
   console.log(id);
 
-  let favorites: number[] = JSON.parse(
-    localStorage.getItem("favorites") || "[]"
-  );
+  let favorites = getFavorites();
   if (favorites.includes(id)) {
     favorites = favorites.filter((pokemonId) => pokemonId != id);
   } else {
@@ -18,12 +16,12 @@ const saveInFavorites = (id: number) => {
 };
 
 const isInFavorites = (id: number): boolean => {
-  const favorites: number[] = JSON.parse(
-    localStorage.getItem("favorites") || "[]"
-  );
+  if (typeof window === 'undefined') return false;
+  const favorites = getFavorites();
   return favorites.includes(id);
 };
 
 export default {
   saveInFavorites,
+  isInFavorites,
 };

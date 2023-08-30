@@ -1,20 +1,25 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import { useState } from "react";
 
-import { Layout } from "@/components/layouts";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { Button, Card, CardBody, Image, Spacer } from "@nextui-org/react";
+
 import { pokemonApi } from "@/api";
 import { PokemonData } from "@/interfaces";
-import { Button, Card, CardBody, Image, Spacer } from "@nextui-org/react";
-import favoritesController from '@/utils/favorites.controller'
+import { Layout } from "@/components/layouts";
+import favoritesController from "@/utils/favorites.controller";
 
 interface Props {
   pokemon: PokemonData;
 }
 
 const PokemonPage = ({ pokemon }: Props) => {
-
-  const toggleSaveFavorites = ()=>{
-    favoritesController.saveInFavorites(pokemon.id)
-  }
+  const [isInFavorites, setIsInFavorites] = useState(
+    favoritesController.isInFavorites(pokemon.id)
+  );
+  const toggleSaveFavorites = () => {
+    favoritesController.saveInFavorites(pokemon.id);
+    setIsInFavorites(!isInFavorites);
+  };
 
   return (
     <Layout title={`Pokemon - ${pokemon.id}`}>
@@ -30,8 +35,15 @@ const PokemonPage = ({ pokemon }: Props) => {
         <Spacer x={4} />
         <CardBody className="flex justify-between bg-background2">
           <div className="flex flex-row justify-between align-bottom">
-            <h2 className="flex items-center text-2xl capitalize">{pokemon.name}</h2>
-            <Button color={"success"} onClick={ toggleSaveFavorites }>Save in favorites</Button>
+            <h2 className="flex items-center text-2xl capitalize">
+              {pokemon.name}
+            </h2>
+            <Button
+              color={isInFavorites ? "primary" : "success"}
+              onClick={toggleSaveFavorites}
+            >
+              {/* {isInFavorites ? "Delete favorites" : "Save favorites"} */}
+            </Button>
           </div>
           <div className="flex flex-col">
             <p className="text-tiny text-white/80">Sprites:</p>
