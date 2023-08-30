@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Button, Card, CardBody, Image, Spacer } from "@nextui-org/react";
@@ -13,9 +13,12 @@ interface Props {
 }
 
 const PokemonPage = ({ pokemon }: Props) => {
-  const [isInFavorites, setIsInFavorites] = useState(
-    favoritesController.isInFavorites(pokemon.id)
-  );
+  const [isInFavorites, setIsInFavorites] = useState(false);
+  
+  useEffect(() => {
+    setIsInFavorites(favoritesController.isInFavorites(pokemon.id));
+  }, []);
+
   const toggleSaveFavorites = () => {
     favoritesController.saveInFavorites(pokemon.id);
     setIsInFavorites(!isInFavorites);
@@ -42,7 +45,7 @@ const PokemonPage = ({ pokemon }: Props) => {
               color={isInFavorites ? "primary" : "success"}
               onClick={toggleSaveFavorites}
             >
-              {/* {isInFavorites ? "Delete favorites" : "Save favorites"} */}
+              {isInFavorites ? "Delete favorites" : "Save favorites"}
             </Button>
           </div>
           <div className="flex flex-col">
