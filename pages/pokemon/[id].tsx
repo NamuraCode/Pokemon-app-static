@@ -4,12 +4,18 @@ import { Layout } from "@/components/layouts";
 import { pokemonApi } from "@/api";
 import { PokemonData } from "@/interfaces";
 import { Button, Card, CardBody, Image, Spacer } from "@nextui-org/react";
+import favoritesController from '@/utils/favorites.controller'
 
 interface Props {
   pokemon: PokemonData;
 }
 
 const PokemonPage = ({ pokemon }: Props) => {
+
+  const toggleSaveFavorites = ()=>{
+    favoritesController.saveInFavorites(pokemon.id)
+  }
+
   return (
     <Layout title={`Pokemon - ${pokemon.id}`}>
       <Card className="m-auto bg-transparent max-w-3xl mt-10 flex flex-row">
@@ -25,7 +31,7 @@ const PokemonPage = ({ pokemon }: Props) => {
         <CardBody className="flex justify-between bg-background2">
           <div className="flex flex-row justify-between align-bottom">
             <h2 className="flex items-center text-2xl capitalize">{pokemon.name}</h2>
-            <Button color={"primary"}>Save favorites</Button>
+            <Button color={"success"} onClick={ toggleSaveFavorites }>Save in favorites</Button>
           </div>
           <div className="flex flex-col">
             <p className="text-tiny text-white/80">Sprites:</p>
