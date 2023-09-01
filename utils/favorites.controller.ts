@@ -23,4 +23,5 @@ const isInFavorites = (id: number): boolean => {
 export default {
   saveInFavorites,
   isInFavorites,
+  getFavorites
 };
