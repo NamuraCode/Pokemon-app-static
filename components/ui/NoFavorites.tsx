@@ -3,11 +3,11 @@ import { Card, CardBody, CardHeader, Image } from "@nextui-org/react";
 export const NoFavorites = () => {
   return (
   <>
-     <Card className="py-4">
-      <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
-        <h4 className="font-bold text-large">No Favorites</h4>
+     <Card className="py-4 bg-transparent w-full h-screen flex items-center justify-center">
+      <CardHeader className="self-center">
+        <h2 className="font-bold text-large">No Favorites</h2>
       </CardHeader>
-      <CardBody className="overflow-visible py-2">
+      <CardBody className="self-center">
         <Image
           alt="dont-find-pokemon"
           className="object-cover rounded-xl"
