@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Button, Card, CardBody, Image, Spacer } from "@nextui-org/react";
 
+import confetti from "canvas-confetti";
+
 import { pokemonApi } from "@/api";
 import { PokemonData } from "@/interfaces";
 import { Layout } from "@/components/layouts";
@@ -14,7 +16,7 @@ interface Props {
 
 const PokemonPage = ({ pokemon }: Props) => {
   const [isInFavorites, setIsInFavorites] = useState(false);
-  
+
   useEffect(() => {
     setIsInFavorites(favoritesController.isInFavorites(pokemon.id));
   }, []);
@@ -22,6 +24,19 @@ const PokemonPage = ({ pokemon }: Props) => {
   const toggleSaveFavorites = () => {
     favoritesController.saveInFavorites(pokemon.id);
     setIsInFavorites(!isInFavorites);
+
+    if (isInFavorites) return;
+
+    confetti({
+      zIndex: 99,
+      particleCount: 100,
+      spread: 160,
+      angle: -100,
+      origin: {
+        x: 1,
+        y: 0,
+      },
+    });
   };
 
   return (

@@ -5,14 +5,13 @@ interface Props {
   id: number;
 }
 
-
 export const FavoritesCard = ({ id }: Props) => {
-    const router = useRouter();
-    const goPokemon = () => {
-      router.push(`/pokemon/${id}`);
-    };
+  const router = useRouter();
+  const goPokemon = () => {
+    router.push(`/pokemon/${id}`);
+  };
 
-    return (
+  return (
     <Card shadow="sm" key={id} isPressable onPress={goPokemon}>
       <CardHeader></CardHeader>
       <CardBody className="overflow-visible p-0">
