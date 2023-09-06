@@ -9,6 +9,7 @@ import { pokemonApi } from "@/api";
 import { PokemonData, PokemonListRes, SmallPokemon } from "@/interfaces";
 import { Layout } from "@/components/layouts";
 import favoritesController from "@/utils/favorites.controller";
+import { pokemonController } from "@/utils";
 
 interface Props {
   pokemon: PokemonData;
@@ -117,6 +118,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
+    const a = await pokemonController.pokemonRes( params )
   const { name } = params as { name: string };
   const { data } = await pokemonApi.get<PokemonData>(`/pokemon/${name}`);
   return {
