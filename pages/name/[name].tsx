@@ -14,7 +14,7 @@ interface Props {
   pokemon: PokemonData;
 }
 
-const PokemonPage = ({ pokemon }: Props) => {
+const PokemonPageByName = ({ pokemon }: Props) => {
   const [isInFavorites, setIsInFavorites] = useState(false);
 
   useEffect(() => {
@@ -102,14 +102,14 @@ const PokemonPage = ({ pokemon }: Props) => {
   );
 };
 
-export default PokemonPage;
+export default PokemonPageByName;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data } = await pokemonApi.get<PokemonListRes>("/pokemon?limit=151");
-  const pokemons: SmallPokemon[] = data.results;
-  
+  const pokemons: string[] = data.results.map((pokemon) => pokemon.name);
+
   return {
-    paths: pokemons.map(({ name }) => ({
+    paths: pokemons.map((name) => ({
       params: { name },
     })),
     fallback: false, // false or "blocking"
