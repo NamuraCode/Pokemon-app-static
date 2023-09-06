@@ -5,11 +5,9 @@ import { Button, Card, CardBody, Image, Spacer } from "@nextui-org/react";
 
 import confetti from "canvas-confetti";
 
-import { pokemonApi } from "@/api";
 import { PokemonData } from "@/interfaces";
 import { Layout } from "@/components/layouts";
-import favoritesController from "@/utils/favorites.controller";
-import { pokemonController } from "@/utils";
+import { favoritesController, pokemonController } from "@/utils";
 
 interface Props {
   pokemon: PokemonData;
@@ -120,7 +118,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   
   return {
     props: {
-      pokemon: pokemonController.pokemonRes(id)
+      pokemon: await pokemonController.pokemonRes(id)
     },
   };
 };
