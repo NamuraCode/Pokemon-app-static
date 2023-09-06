@@ -106,11 +106,11 @@ export default PokemonPageByName;
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const { data } = await pokemonApi.get<PokemonListRes>("/pokemon?limit=151");
-  const pokemons: string[] = data.results.map((pokemon) => pokemon.name);
+  const pokemonsName: string[] = data.results.map((pokemon) => pokemon.name);
 
   return {
-    paths: pokemons.map((name) => ({
-      params: { name },
+    paths: pokemonsName.map((PokeName) => ({
+      params: { PokeName },
     })),
     fallback: false, // false or "blocking"
   };
