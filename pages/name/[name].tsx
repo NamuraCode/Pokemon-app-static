@@ -109,8 +109,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const pokemonsName: string[] = data.results.map((pokemon) => pokemon.name);
 
   return {
-    paths: pokemonsName.map((PokeName) => ({
-      params: { PokeName },
+    paths: pokemonsName.map((name) => ({
+      params: { name },
     })),
     fallback: false, // false or "blocking"
   };
