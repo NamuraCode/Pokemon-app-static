@@ -2,10 +2,9 @@ import { pokemonApi } from "@/api";
 import { PokemonData } from "@/interfaces";
 import { ParsedUrlQuery } from "querystring";
 
-const pokemonRes = async (params: ParsedUrlQuery | undefined ) => {
+const pokemonRes = async (params: string ) => {
   try {
-    const { name } = params as { name: string };
-    const { data } = await pokemonApi.get<PokemonData>(`/pokemon/${name}`);
+    const { data } = await pokemonApi.get<PokemonData>(`/pokemon/${params}`);
     const pokemon = {
       id: data.id,
       name: data.name,
