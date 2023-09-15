@@ -120,5 +120,6 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       pokemon: await pokemonController.pokemonRes(id)
     },
+    revalidate: 10
   };
 };
