@@ -8,6 +8,7 @@ import confetti from "canvas-confetti";
 import { PokemonData } from "@/interfaces";
 import { Layout } from "@/components/layouts";
 import { favoritesController, pokemonController } from "@/utils";
+import { redirect } from "next/dist/server/api-utils";
 
 interface Props {
   pokemon: PokemonData;
@@ -109,17 +110,26 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths: numberPokemons.map((id) => ({
       params: { id },
     })),
-    fallback: false, // false or "blocking"
+    fallback: "blocking", // false or "blocking"
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { id } = params as { id: string };
-  
+  const pokemon = await pokemonController.pokemonRes(id);
+  if (!pokemon) {
+    return {
+      redirect: {
+        destination: "/", //home
+        permanent: false, // Si es una redireccion permanente o no puede ser que haya un pokemon nuevo
+      },
+    };
+  }
+
   return {
     props: {
-      pokemon: await pokemonController.pokemonRes(id)
+      pokemon,
     },
-    revalidate: 10
+    revalidate: 10,
   };
 };
