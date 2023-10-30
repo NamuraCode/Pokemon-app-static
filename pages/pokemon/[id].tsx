@@ -121,7 +121,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     return {
       redirect: {
         destination: "/", //home
-        permanent: false, // Si es una redireccion permanente o no puede ser que haya un pokemon nuevo
+        permanent: false, // permanent en false por que puede ser que se creen nuevos pokemons
       },
     };
   }
