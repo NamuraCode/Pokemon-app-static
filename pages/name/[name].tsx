@@ -112,16 +112,29 @@ export const getStaticPaths: GetStaticPaths = async () => {
     paths: pokemonsName.map((name) => ({
       params: { name },
     })),
-    fallback: false, // false or "blocking"
+    // fallback: false, // false or "blocking"
+    fallback: "blocking"
   };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const { name } = params as { name: string };
 
+  const pokemon =  await pokemonController.pokemonRes(name)
+
+  if (!pokemon) {
+    return{
+      redirect:{
+        destination: "/",
+        permanent: false //en falso por si incrementan los pokemons
+      }
+    }
+  }
+
   return {
     props: {
-      pokemon: await pokemonController.pokemonRes(name)
+      pokemon
     },
+    revalidate: 10 // how many times my page validate pokemons info
   };
 };
