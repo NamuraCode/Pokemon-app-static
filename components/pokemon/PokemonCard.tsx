@@ -10,7 +10,7 @@ interface Props {
 export const PokemonCart = ({ pokemon }: Props) => {
   const res = useRouter()
   const redirect = ()=>{
-    res.push(`name/${pokemon.name}`)
+    res.push(`pokemon/${pokemon.name}`)
   }
   return (
     <Card
